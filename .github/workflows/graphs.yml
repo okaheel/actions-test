@@ -1,0 +1,23 @@
+name: Python application
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: generate graphs
+      run: |
+        python ml_1.py
+    - name: add and commit
+      run: |
+        git add .
+        git commit -m "triggerd on action"
+        git push
