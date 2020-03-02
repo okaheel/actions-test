@@ -15,7 +15,9 @@ jobs:
         python-version: 3.8
     - name: generate graphs
       run: |
-        python ml_1.py
+        pip3 install matplotlib
+        pip3 install numpy
+        python3 ml_1.py
     - name: add and commit
       run: |
         git add .
