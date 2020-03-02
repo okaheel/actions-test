@@ -1,25 +1,25 @@
 name: Python application
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
 jobs:
-  build:
-
+  updateGraphs:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-    - name: generate graphs
-      run: |
-        pip3 install matplotlib.pyplot
-        pip3 install numpy
-        python3 ml_1.py
-    - name: add and commit
-      run: |
-        git add .
-        git commit -m "triggerd on action"
-        git push
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+
+      - name: Generate graphs
+        run: python ml_1.py
+
+      - name: Update graphs
+        run: |
+          git config --global user.name 'okaheel'
+          git config --global user.email 'omar.kaheel@colorado.edu'
+          git commit -am "Update graphs"
+          git push
