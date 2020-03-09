@@ -21,5 +21,5 @@ jobs:
         run: |
           git config --global user.name 'okaheel'
           git config --global user.email 'omar.kaheel@colorado.edu'
-          git commit -am "Update graphs"
+          git commit -m "Update graphs"
           git push
